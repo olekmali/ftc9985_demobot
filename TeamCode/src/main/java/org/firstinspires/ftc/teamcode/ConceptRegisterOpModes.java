@@ -72,7 +72,6 @@ public class ConceptRegisterOpModes
     manager.register("Autonomous Ball" ,      PushBotAutoBall.class);
     manager.register("Autonomous Red" ,       PushBotAutoRed.class);
     manager.register("Autonomous Red w Gyro", PushBotAutoRedGyro.class);
-    manager.register("UltimateTelop" , UltimateTelopDrive.class);
 //    manager.register("Autonomous Test" ,    PushBotAutoTest.class);
   }
 }
