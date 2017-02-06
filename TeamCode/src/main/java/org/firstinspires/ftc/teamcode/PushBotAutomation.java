@@ -19,7 +19,7 @@ abstract public class PushBotAutomation extends LinearOpMode {
     public static final double SPEED_DRIVE = 0.40;
     public static final double SPEED_APPROACH = 0.25;
 
-    public static final double SPEED_TURN = 0.4;
+    public static final double SPEED_TURN = 0.5;
     public static final double ANGLE_90 = 90.0;
     public static final double TURN_LEFT = -ANGLE_90;
     public static final double TURN_RIGHT = ANGLE_90;
