@@ -97,19 +97,19 @@ public class PushBotAutoBlue extends PushBotAutomation {
         telemetry.addData(">", "Robot Ready.");
         telemetry.update();
 
-        encoderDriveDistance(SPEED_DRIVE, 16.0,        TOUT_MEDIUM);
+        encoderDriveDistance(SPEED_DRIVE, 16.0, TOUT_MEDIUM);
         encoderTurnInPlace(SPEED_TURN, TURN_RIGHT/2.0, TOUT_MEDIUM);
         encoderDriveDistance(SPEED_DRIVE, (24.0*1.41), TOUT_MEDIUM);
         encoderTurnInPlace(SPEED_TURN, TURN_RIGHT/2.0, TOUT_MEDIUM);
-        encoderDriveToBumper(SPEED_APPROACH,           TOUT_LONG);
+        encoderDriveToBumper(SPEED_APPROACH, TOUT_LONG);
 
-        encoderTurnInPlace(SPEED_TURN, TURN_LEFT,      TOUT_MEDIUM);
+        encoderTurnInPlace(SPEED_TURN, TURN_LEFT, TOUT_MEDIUM);
 
         encoderDriveToWhiteLine(SPEED_APPROACH, WHITE_THRESHOLD, TOUT_LONG);
 
         if ( MattColorDetector.confirmBlue(sensors.colorSensor) )
         {
-            encoderDriveDistance(SPEED_APPROACH, 1.5,  TOUT_MEDIUM);
+            encoderDriveDistance(SPEED_APPROACH, 1.5,   TOUT_MEDIUM);
             if ( MattColorDetector.confirmBlue(sensors.colorSensor) )
             {
                 pushButton(SPEED_ARM, TOUT_ARM);
@@ -117,7 +117,7 @@ public class PushBotAutoBlue extends PushBotAutomation {
         }
         else
         {
-            encoderDriveDistance(SPEED_APPROACH, 6.0,  TOUT_MEDIUM);
+            encoderDriveDistance(SPEED_APPROACH, 6.0,   TOUT_MEDIUM);
             if ( MattColorDetector.confirmBlue(sensors.colorSensor) )
             {
                 pushButton(SPEED_ARM, TOUT_ARM);
@@ -146,8 +146,9 @@ public class PushBotAutoBlue extends PushBotAutomation {
 
         encoderTurnInPlace(SPEED_TURN, 10.0, TOUT_SHORT);
         encoderDriveDistance(SPEED_DRIVE, -30.0,        TOUT_MEDIUM);
-        encoderDriveToWhiteLine(-SPEED_FULL, WHITE_THRESHOLD, TOUT_LONG);
+        encoderDriveToWhiteLine(-SPEED_APPROACH, WHITE_THRESHOLD, TOUT_LONG);
         encoderDriveDistance(SPEED_APPROACH, -19.0,     TOUT_MEDIUM);
+
 
         telemetry.addData("Path", "Complete"); telemetry.update();
     }
