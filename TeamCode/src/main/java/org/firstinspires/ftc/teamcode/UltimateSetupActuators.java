@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 //import com.qualcomm.robotcore.hardware.Servo;
 
@@ -23,10 +24,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class UltimateSetupActuators
 {
     /* Public actuator members. */
-    public DcMotor FrontLeft = null;
-    public DcMotor FrontRight = null;
-    public DcMotor RearLeft = null;
-    public DcMotor RearRight = null;
+    public DcMotor UpperLeft   = null;
+    public DcMotor UpperRight  = null;
+    public DcMotor BottomLeft  = null;
+    public DcMotor BottomRight = null;
 
     //public DcMotor armMotor    = null;
 
@@ -53,34 +54,34 @@ public class UltimateSetupActuators
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        FrontLeft = hwMap.dcMotor.get("FrontLeft_Motor");
-        FrontRight = hwMap.dcMotor.get("FrontRight_Motor");
-        RearLeft = hwMap.dcMotor.get("RearLeft_Motor");
-        RearRight = hwMap.dcMotor.get("RearRight_Motor");
+        UpperLeft   = hwMap.dcMotor.get("FrontLeft_Motor");
+        UpperRight  = hwMap.dcMotor.get("FrontRight_Motor");
+        BottomLeft  = hwMap.dcMotor.get("RearLeft_Motor");
+        BottomRight = hwMap.dcMotor.get("Rear   Right_Motor");
 
         //armMotor    = hwMap.dcMotor.get("left_arm");
 
-        FrontLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        FrontRight.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
-        RearLeft.setDirection(DcMotor.Direction.FORWARD);
-        RearRight.setDirection(DcMotor.Direction.FORWARD);
+        UpperLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
+        UpperRight.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        BottomLeft.setDirection(DcMotor.Direction.FORWARD);
+        BottomRight.setDirection(DcMotor.Direction.REVERSE);
 
         //armMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
         // Set all motors to zero power
-        FrontLeft.setPower(0);
-        FrontRight.setPower(0);
-        RearLeft.setPower(0);
-        RearRight.setPower(0);
+        UpperLeft.setPower(0);
+        UpperRight.setPower(0);
+        BottomLeft.setPower(0);
+        BottomRight.setPower(0);
 
         //armMotor.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        FrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        FrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        RearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        RearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        UpperLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        UpperRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        BottomLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        BottomRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
