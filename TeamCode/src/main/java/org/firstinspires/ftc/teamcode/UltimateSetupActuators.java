@@ -62,9 +62,9 @@ public class UltimateSetupActuators
         //armMotor    = hwMap.dcMotor.get("left_arm");
 
         UpperLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        UpperRight.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        UpperRight.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
         BottomLeft.setDirection(DcMotor.Direction.FORWARD);
-        BottomRight.setDirection(DcMotor.Direction.REVERSE);
+        BottomRight.setDirection(DcMotor.Direction.FORWARD);
 
         //armMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
