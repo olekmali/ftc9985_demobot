@@ -53,7 +53,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  */
 
 @TeleOp(name="Teleoperation", group="Teleop")
-public class UltimateTelopDrive extends OpMode {
+public class UltimateTelopDrive extends OpMode
+{
 
     /* Declare OpMode members. */
     private UltimateSetupActuators robot            = new UltimateSetupActuators(); // Use Pushbot's actuators
@@ -64,6 +65,61 @@ public class UltimateTelopDrive extends OpMode {
     //  private staticfinal double  CLAW_SPEED      = 0.02 ;                    // sets rate to move servo
     private static final double ARM_UP_POWER    =  0.8 ;                   //
     private static final double ARM_DOWN_POWER  = -0.8 ;
+
+    //Used to move the robot on the vertical axis
+    public void Vertical (double power)
+    {
+        robot.UpperLeft.setPower(power);
+        robot.UpperRight.setPower(power);
+        robot.BottomLeft.setPower(-power);
+        robot.BottomRight.setPower(-power);
+    }
+
+    //Used to move the robot on the horizontal axis
+    public void Horizontal (double power)
+    {
+        robot.UpperLeft.setPower(power);
+        robot.UpperRight.setPower(-power);
+        robot.BottomLeft.setPower(power);
+        robot.BottomRight.setPower(-power);
+    }
+
+    //Used to move the robot on the forword right axis
+    public void DiagonalRight (double power)
+    {
+        robot.UpperLeft.setPower(power);
+        robot.UpperRight.setPower(0);
+        robot.BottomLeft.setPower(0);
+        robot.BottomRight.setPower(-power);
+    }
+
+    //Used to move the robot on the forword left axis
+    public void DiagonalLeft (double power)
+    {
+        robot.UpperLeft.setPower(0);
+        robot.UpperRight.setPower(-power);
+        robot.BottomLeft.setPower(power);
+        robot.BottomRight.setPower(0);
+    }
+
+    //Used to rotate the robot around the center of the robot
+    public void Rotate (double power)
+    {
+        robot.UpperLeft.setPower(power);
+        robot.UpperRight.setPower(power);
+        robot.BottomLeft.setPower(power);
+        robot.BottomRight.setPower(power);
+    }
+
+    //Used to stop the robot
+    public void Stop ()
+    {
+        robot.UpperLeft.setPower(0);
+        robot.UpperRight.setPower(0);
+        robot.BottomLeft.setPower(0);
+        robot.BottomRight.setPower(0);
+    }
+
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -113,8 +169,6 @@ public class UltimateTelopDrive extends OpMode {
 
         robot.UpperLeft.setPower(Vertical);
         robot.UpperRight.setPower(Vertical);
-        robot.BottomLeft.setPower(Vertical);
-        robot.BottomRight.setPower(Vertical);
 
 
         //robot.rightMotor.setPower(right);
