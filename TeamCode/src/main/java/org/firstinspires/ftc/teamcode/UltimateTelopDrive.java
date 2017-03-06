@@ -52,7 +52,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Teleoperation", group="Teleop")
+@TeleOp(name="UltimateTeleoperation", group="Teleop")
 public class UltimateTelopDrive extends OpMode
 {
 
@@ -65,9 +65,10 @@ public class UltimateTelopDrive extends OpMode
     //  private staticfinal double  CLAW_SPEED      = 0.02 ;                    // sets rate to move servo
     private static final double ARM_UP_POWER    =  0.8 ;                   //
     private static final double ARM_DOWN_POWER  = -0.8 ;
+    private static final double Deadzone = 0.05;
 
     //Used to move the robot on the vertical axis
-    public void Vertical (double power)
+    private void DriveVertical (double power)
     {
         robot.UpperLeft.setPower(power);
         robot.UpperRight.setPower(power);
@@ -76,7 +77,7 @@ public class UltimateTelopDrive extends OpMode
     }
 
     //Used to move the robot on the horizontal axis
-    public void Horizontal (double power)
+    private void DriveHorizontal (double power)
     {
         robot.UpperLeft.setPower(power);
         robot.UpperRight.setPower(-power);
@@ -85,7 +86,7 @@ public class UltimateTelopDrive extends OpMode
     }
 
     //Used to move the robot on the forword right axis
-    public void DiagonalRight (double power)
+    private void DriveDiagonalRight (double power)
     {
         robot.UpperLeft.setPower(power);
         robot.UpperRight.setPower(0);
@@ -94,7 +95,7 @@ public class UltimateTelopDrive extends OpMode
     }
 
     //Used to move the robot on the forword left axis
-    public void DiagonalLeft (double power)
+    private void DriveDiagonalLeft (double power)
     {
         robot.UpperLeft.setPower(0);
         robot.UpperRight.setPower(-power);
@@ -103,7 +104,7 @@ public class UltimateTelopDrive extends OpMode
     }
 
     //Used to rotate the robot around the center of the robot
-    public void Rotate (double power)
+    private void DriveRotate (double power)
     {
         robot.UpperLeft.setPower(power);
         robot.UpperRight.setPower(power);
@@ -112,7 +113,7 @@ public class UltimateTelopDrive extends OpMode
     }
 
     //Used to stop the robot
-    public void Stop ()
+    private void StopDrive ()
     {
         robot.UpperLeft.setPower(0);
         robot.UpperRight.setPower(0);
@@ -158,6 +159,10 @@ public class UltimateTelopDrive extends OpMode
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         double Vertical = -gamepad1.left_stick_x;
         double Horizontal = -gamepad1.left_stick_y;
+        float LeftRotate = -gamepad1.left_trigger;
+        float RightRotate = -gamepad1.right_trigger;
+        boolean PressedX = gamepad1.x;
+        String Mode = "";
 
 
         // precision mode drive
@@ -165,10 +170,57 @@ public class UltimateTelopDrive extends OpMode
         {
             Vertical = 0.25 * Vertical;
             Horizontal = 0.25 * Horizontal;
+            Mode = "Precise ";
         }
 
-        robot.UpperLeft.setPower(Vertical);
-        robot.UpperRight.setPower(Vertical);
+        //See if joystick is in dead zone
+        if ( Math.abs(Vertical) < Deadzone && Math.abs(Horizontal) < Deadzone)
+        {
+            if (Math.abs(LeftRotate) > Deadzone || Math.abs(RightRotate) > Deadzone)
+            {
+                DriveRotate(RightRotate - LeftRotate);
+                Mode += "Rotate";
+            }
+            else
+            {
+                StopDrive();
+                Mode += "Stop";
+            }
+
+        }
+        //Sees if X on the gamepad is pressed
+        else if (PressedX)
+        {
+            //Sees what diagonal is used
+            if (Math.abs(Vertical) > Math.abs(Horizontal))
+            {
+                //Makes the robot move on the Vertical Left axis
+                DriveDiagonalLeft(Vertical);
+                Mode += "Diagonal Left";
+            }
+            else
+            {
+                //Makes the robot move on the Vertical Right axis
+                DriveDiagonalRight(Horizontal);
+                Mode += "Diagonal Right";
+            }
+        }
+        else
+        {
+            //Sees if Vertical or Horizontal movement
+            if (Math.abs(Vertical) > Math.abs(Horizontal))
+            {
+                //Makes the robot move on the Vertical axis
+                DriveVertical(Vertical);
+                Mode += "Vertical";
+            }
+            else
+            {
+                //Makes the robot move on the Horizontal axis
+                DriveHorizontal(Horizontal);
+                Mode += "Horizontal";
+            }
+        }
 
 
         //robot.rightMotor.setPower(right);
@@ -179,8 +231,10 @@ public class UltimateTelopDrive extends OpMode
 //        telemetry.addData("claw",  "Offset = %.2f", clawOffset);
         telemetry.addData("Vertical",       "%.2f",     Vertical);
         telemetry.addData("Horizontal",      "%.2f",     Horizontal);
-        telemetry.addData("left trig",  "%.2f",     gamepad1.left_trigger);
-        telemetry.addData("right trig",  "%.2f",    gamepad1.right_trigger);
+        telemetry.addData("left trig",  "%.2f",     LeftRotate);
+        telemetry.addData("right trig",  "%.2f",    RightRotate);
+        telemetry.addData("Is X pressed" , "%b" , PressedX);
+        telemetry.addData("Mode is" , "%s" , Mode);
     }
 
     /*
