@@ -70,55 +70,55 @@ public class UltimateTelopDrive extends OpMode
     //Used to move the robot on the vertical axis
     private void DriveVertical (double power)
     {
-        robot.UpperLeft.setPower(power);
-        robot.UpperRight.setPower(power);
-        robot.BottomLeft.setPower(-power);
-        robot.BottomRight.setPower(-power);
+        robot.FrontLeft.setPower(power);
+        robot.FrontRight.setPower(-power);
+        robot.RearLeft.setPower(-power);
+        robot.RearRight.setPower(power);
     }
 
     //Used to move the robot on the horizontal axis
     private void DriveHorizontal (double power)
     {
-        robot.UpperLeft.setPower(power);
-        robot.UpperRight.setPower(-power);
-        robot.BottomLeft.setPower(power);
-        robot.BottomRight.setPower(-power);
+        robot.FrontLeft.setPower(power);
+        robot.FrontRight.setPower(power);
+        robot.RearLeft.setPower(-power);
+        robot.RearRight.setPower(-power);
     }
 
     //Used to move the robot on the forword right axis
     private void DriveDiagonalRight (double power)
     {
-        robot.UpperLeft.setPower(power);
-        robot.UpperRight.setPower(0);
-        robot.BottomLeft.setPower(0);
-        robot.BottomRight.setPower(-power);
+        robot.FrontLeft.setPower(power);
+        robot.FrontRight.setPower(0);
+        robot.RearLeft.setPower(0);
+        robot.RearRight.setPower(-power);
     }
 
     //Used to move the robot on the forword left axis
     private void DriveDiagonalLeft (double power)
     {
-        robot.UpperLeft.setPower(0);
-        robot.UpperRight.setPower(-power);
-        robot.BottomLeft.setPower(power);
-        robot.BottomRight.setPower(0);
+        robot.FrontLeft.setPower(0);
+        robot.FrontRight.setPower(-power);
+        robot.RearLeft.setPower(power);
+        robot.RearRight.setPower(0);
     }
 
     //Used to rotate the robot around the center of the robot
     private void DriveRotate (double power)
     {
-        robot.UpperLeft.setPower(power);
-        robot.UpperRight.setPower(power);
-        robot.BottomLeft.setPower(power);
-        robot.BottomRight.setPower(power);
+        robot.FrontLeft.setPower(power);
+        robot.FrontRight.setPower(power);
+        robot.RearLeft.setPower(power);
+        robot.RearRight.setPower(power);
     }
 
     //Used to stop the robot
     private void StopDrive ()
     {
-        robot.UpperLeft.setPower(0);
-        robot.UpperRight.setPower(0);
-        robot.BottomLeft.setPower(0);
-        robot.BottomRight.setPower(0);
+        robot.FrontLeft.setPower(0);
+        robot.FrontRight.setPower(0);
+        robot.RearLeft.setPower(0);
+        robot.RearRight.setPower(0);
     }
 
 
@@ -134,7 +134,7 @@ public class UltimateTelopDrive extends OpMode
         sensors.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver");    //
+        telemetry.addData("Say", "Master please control me!");    //
     }
 
     /*
@@ -159,8 +159,8 @@ public class UltimateTelopDrive extends OpMode
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         double Vertical = -gamepad1.left_stick_x;
         double Horizontal = -gamepad1.left_stick_y;
-        float LeftRotate = -gamepad1.left_trigger;
-        float RightRotate = -gamepad1.right_trigger;
+        float LeftRotate = gamepad1.left_trigger;
+        float RightRotate = gamepad1.right_trigger;
         boolean PressedX = gamepad1.x;
         String Mode = "";
 
@@ -242,7 +242,7 @@ public class UltimateTelopDrive extends OpMode
      */
     @Override
     public void stop() {
-        telemetry.addData("Say", "Bye Driver");    //
+        telemetry.addData("Say", "Don't leave me, please!");    //
     }
 
 }
