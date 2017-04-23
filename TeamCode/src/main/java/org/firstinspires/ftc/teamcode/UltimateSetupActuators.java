@@ -56,7 +56,7 @@ public class UltimateSetupActuators
         FrontLeft = hwMap.dcMotor.get("FrontLeft_Motor");
         FrontRight = hwMap.dcMotor.get("FrontRight_Motor");
         RearLeft = hwMap.dcMotor.get("RearLeft_Motor");
-        RearRight = hwMap.dcMotor.get("Rear   Right_Motor");
+        RearRight = hwMap.dcMotor.get("RearRight_Motor");
 
         //armMotor    = hwMap.dcMotor.get("left_arm");
 

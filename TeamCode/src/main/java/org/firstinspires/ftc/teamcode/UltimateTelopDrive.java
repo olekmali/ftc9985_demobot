@@ -65,15 +65,15 @@ public class UltimateTelopDrive extends OpMode
     //  private staticfinal double  CLAW_SPEED      = 0.02 ;                    // sets rate to move servo
     private static final double ARM_UP_POWER    =  0.8 ;                   //
     private static final double ARM_DOWN_POWER  = -0.8 ;
-    private static final double Deadzone = 0.05;
+    private static final double Deadzone = 0.1;
 
     //Used to move the robot on the vertical axis
     private void DriveVertical (double power)
     {
         robot.FrontLeft.setPower(power);
         robot.FrontRight.setPower(-power);
-        robot.RearLeft.setPower(-power);
-        robot.RearRight.setPower(power);
+        robot.RearLeft.setPower(power);
+        robot.RearRight.setPower(-power);
     }
 
     //Used to move the robot on the horizontal axis
@@ -157,8 +157,8 @@ public class UltimateTelopDrive extends OpMode
     @Override
     public void loop() {
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
-        double Vertical = -gamepad1.left_stick_x;
-        double Horizontal = -gamepad1.left_stick_y;
+        double Vertical = gamepad1.left_stick_y;
+        double Horizontal = -gamepad1.left_stick_x;
         float LeftRotate = gamepad1.left_trigger;
         float RightRotate = gamepad1.right_trigger;
         boolean PressedX = gamepad1.x;
@@ -170,6 +170,8 @@ public class UltimateTelopDrive extends OpMode
         {
             Vertical = 0.25 * Vertical;
             Horizontal = 0.25 * Horizontal;
+            LeftRotate = 0.25f * LeftRotate;
+            RightRotate = 0.25f * RightRotate;
             Mode = "Precise ";
         }
 
