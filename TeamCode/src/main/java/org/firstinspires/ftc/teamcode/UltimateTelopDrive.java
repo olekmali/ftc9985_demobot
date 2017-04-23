@@ -180,7 +180,7 @@ public class UltimateTelopDrive extends OpMode
         {
             if (Math.abs(LeftRotate) > Deadzone || Math.abs(RightRotate) > Deadzone)
             {
-                DriveRotate(RightRotate - LeftRotate);
+                DriveRotate(LeftRotate - RightRotate);
                 Mode += "Rotate";
             }
             else
