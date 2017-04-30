@@ -34,7 +34,7 @@ abstract public class PushBotAutomationUltimate extends LinearOpMode {
 
     /* Declare OpMode data members */
     UltimateSetupActuators robot = new UltimateSetupActuators();  // Use Pushbot's actuators
-    UltimateSetupSensors sensors = new UltimateSetupSensors();    // Use Pushbot's sensors
+    MattSetupSensors sensors = new MattSetupSensors();    // Use Pushbot's sensors
     /* Timeout variable */
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -83,8 +83,7 @@ abstract public class PushBotAutomationUltimate extends LinearOpMode {
         }
     }
 
-    public void fullStop()
-    {
+    public void fullStop() {
         telemetry.addData("Status", "fullStop");
         telemetry.update();
         robot.FrontLeft.setPower(0);
@@ -94,8 +93,7 @@ abstract public class PushBotAutomationUltimate extends LinearOpMode {
     }
 
 
-    public void encoderReset()
-    {
+    public void encoderReset() {
         telemetry.addData("Status", "encoderReset");
         telemetry.update();
         robot.FrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
