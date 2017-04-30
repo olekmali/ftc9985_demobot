@@ -64,8 +64,7 @@ public class PushBotUltimateRook extends PushBotAutomationUltimate
     // use the classes above that was created to define a Pushbot's hardware
 
     @Override
-    public void runOpMode()
-    {
+    public void runOpMode() {
         /*
          * Initialize the drive system variables.
          * The init() method of the hardware class does all the work here
