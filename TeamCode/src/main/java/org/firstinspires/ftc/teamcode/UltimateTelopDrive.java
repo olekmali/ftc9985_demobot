@@ -188,7 +188,6 @@ public class UltimateTelopDrive extends OpMode
                 StopDrive();
                 Mode += "Stop";
             }
-
         }
         //Sees if X on the gamepad is pressed
         else if (PressedX)
