@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsDigitalTouchSensor;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsTouchSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
@@ -15,10 +15,10 @@ public class UltimateSetupSensors {
 
     /* Public sensor members. */
     /* Touch Sensor */
-    public ModernRoboticsDigitalTouchSensor touchSensorFront    = null;
-    public ModernRoboticsDigitalTouchSensor touchSensorArmPush  = null;
-    public ModernRoboticsDigitalTouchSensor touchSensorArmIn    = null;
-    public ModernRoboticsDigitalTouchSensor touchSensorArmOut   = null;
+    public ModernRoboticsTouchSensor touchSensorFront    = null;
+    public ModernRoboticsTouchSensor touchSensorArmPush  = null;
+    public ModernRoboticsTouchSensor touchSensorArmIn    = null;
+    public ModernRoboticsTouchSensor touchSensorArmOut   = null;
 
     //ODS *Addon
     public OpticalDistanceSensor lightSensor = null;
