@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsDigitalTouchSensor;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsTouchSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -14,10 +14,10 @@ public class UltimateSetupSensors {
 
     /* Public sensor members. */
     /* Touch Sensor */
-    public ModernRoboticsDigitalTouchSensor touchSensorFront    = null;
-    public ModernRoboticsDigitalTouchSensor touchSensorArmPush  = null;
-    public ModernRoboticsDigitalTouchSensor touchSensorArmIn    = null;
-    public ModernRoboticsDigitalTouchSensor touchSensorArmOut   = null;
+    public ModernRoboticsTouchSensor touchSensorFront    = null;
+    public ModernRoboticsTouchSensor touchSensorArmPush  = null;
+    public ModernRoboticsTouchSensor touchSensorArmIn    = null;
+    public ModernRoboticsTouchSensor touchSensorArmOut   = null;
 
     //ODS *Addon
     public OpticalDistanceSensor lightSensor = null;
@@ -42,10 +42,10 @@ public class UltimateSetupSensors {
         hwMap = ahwMap;
 
         //Define touchSensorFront
-        touchSensorFront    = (ModernRoboticsDigitalTouchSensor) hwMap.touchSensor.get("touchFront");
-        touchSensorArmPush  = (ModernRoboticsDigitalTouchSensor) hwMap.touchSensor.get("touchArmPush");
-        touchSensorArmIn    = (ModernRoboticsDigitalTouchSensor) hwMap.touchSensor.get("touchArmIn");
-        touchSensorArmOut   = (ModernRoboticsDigitalTouchSensor) hwMap.touchSensor.get("touchArmOut");
+        touchSensorFront    = (ModernRoboticsTouchSensor) hwMap.touchSensor.get("touchFront");
+        touchSensorArmPush  = (ModernRoboticsTouchSensor) hwMap.touchSensor.get("touchArmPush");
+        touchSensorArmIn    = (ModernRoboticsTouchSensor) hwMap.touchSensor.get("touchArmIn");
+        touchSensorArmOut   = (ModernRoboticsTouchSensor) hwMap.touchSensor.get("touchArmOut");
 
         //Define lightSensor & enbale its led
         lightSensor = hwMap.opticalDistanceSensor.get("lightSensor");
