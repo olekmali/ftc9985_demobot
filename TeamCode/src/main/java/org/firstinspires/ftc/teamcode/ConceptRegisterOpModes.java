@@ -66,6 +66,7 @@ public class ConceptRegisterOpModes
     // Un-comment any line to enable that sample.
     // Or add your own lines to register your Team opmodes.
 
+    manager.register("Teleoperation" ,        UltimateTelopDriveWithSensors.class);
     manager.register("Teleoperation" ,        UltimateTelopDrive.class);
   }
 }
