@@ -59,12 +59,7 @@ public class UltimateTelopDrive extends OpMode
     /* Declare OpMode members. */
     private UltimateSetupActuators robot            = new UltimateSetupActuators(); // Use Pushbot's actuators
     private UltimateSetupActuators sensors            = new UltimateSetupActuators();   // Use Pushbot's sensors
-    // use the class above that was created to define a Pushbot's hardware
-//  private double              clawOffset      = 0.0 ;                     // Servo mid position
 
-    //  private staticfinal double  CLAW_SPEED      = 0.02 ;                    // sets rate to move servo
-    private static final double ARM_UP_POWER    =  0.8 ;                   //
-    private static final double ARM_DOWN_POWER  = -0.8 ;
     private static final double Deadzone = 0.05;
 
     //Used to move the robot on the vertical axis
